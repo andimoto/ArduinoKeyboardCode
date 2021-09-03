@@ -96,14 +96,15 @@ void loop()
 
   if(digitalRead(LOCK) == 0)
   {
-    lockScreen();             //Button release is done in this function
+    lockScreenLinux();             //Button release is done in this function
+    //lockScreenWin();             //Button release is done in this function
     delay(150);  // delay 
   }
 
   Consumer.releaseAll();
 }
 
-void lockScreen(void)
+void lockScreenLinux(void)
 {
     Keyboard.press(KEY_LEFT_CTRL);
     Keyboard.press(KEY_LEFT_ALT);
@@ -111,7 +112,12 @@ void lockScreen(void)
     Keyboard.releaseAll();
 }
 
-
+void lockScreenWin(void)
+{
+    Keyboard.press(KEY_LEFT_GUI);
+    Keyboard.write('l');
+    Keyboard.releaseAll();
+}
 
 void startLinuxTerminal(void)
 {
